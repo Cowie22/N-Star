@@ -17,28 +17,30 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > An interactive map for A ski Resort called...
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > The market for this product is for anybody on the mountain.  Most likely not people who are super familiar with the mountain.  However, for the majority of customers who would enjoy an interactive guide to what the resort has to offer.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > This app will allow you to visualize the mountain in an interactive way and show you what the mountain has to offer.  You will be able to see all of the chairlifts and trails.  This includes the difficultly of all the trails.  Furthermore, one will be able to see the features that are not relating to skiing.  Such as an upcoming event section, places to eat, the ice rink, etc...
 
-## Problem ##
-  > Describe the problem your product solves.
-
-## Solution ##
-  > Describe how your product elegantly solves the problem.
+## Problem and Solution ##
+  > Convenience of an interactive map.  Instead of pulling out that obnoxious and hard to read map that the hill provides.  You will have a simple, colorful and clear guide to what the resort offers you for that day.  The average person coming to the resort does not want to read a complicated map.  They will want something simple and easy to understand.  They will want to meet up with others easy and my app will accomplish this task.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > What is this a Ski Hill for ants?!!
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > It'll be easy to open the point is simplicity after creating initial account you won't have to login again
+    1. Just open the app
+    2. Select the dropdown for upcoming events
+    3. Be able to see all the open chairs and runs.
+    4. Have weight times for chairs
+    5. Select favorite runs or runs to be done today etc.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > I got lost using this map.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > It would be cool if you used this app.  If not that's fine to.  You do you.
