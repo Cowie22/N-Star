@@ -7,3 +7,9 @@ h1 {
   color: #FFD100;
   text-align: center;
 }
+
+.image_container {
+  display: flex;
+  justify-content: center;
+}
+
