@@ -4,8 +4,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
-    }
+      runName: '',
+      terrain: '',
+      length: 0,
+      open: true,
+    };
   }
   render() {
     const URL = 'http://www.accommodationtahoe.com/assets/images/autogen/a_north.gif';
