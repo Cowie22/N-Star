@@ -30,7 +30,6 @@ class App extends React.Component {
   getOneRun(id) {
     axios.get(`/run/${id}`)
       .then(res => {
-        console.log(res.data[0].id)
         this.setState({
           id: res.data[0].id,
           name: res.data[0].name,
@@ -39,10 +38,6 @@ class App extends React.Component {
         });
       });
   }
-
-  // hangleClick(area) {
-	// 	this.setState({ msg: `You clicked on ${area.shape} at coords ${JSON.stringify(area.coords)} !`});
-	// }
 
   render() {
     const URL = 'http://www.accommodationtahoe.com/assets/images/autogen/a_north.gif';
