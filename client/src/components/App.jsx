@@ -1,26 +1,47 @@
 import React from 'react';
+import axios from 'axios';
 import ImageMapper from 'react-image-mapper';
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      runName: '',
+      runInfo: [],
+      name: '',
       terrain: '',
-      length: 0,
-      open: true,
+      status: '',
     };
+    this.getRuns = this.getRuns.bind(this);
   }
+
+  componentDidMount() {
+    this.getRuns();
+  }
+
+  getRuns() {
+    axios.get(`/run`)
+      .then(res => {
+        this.setState({
+          runInfo: res.data,
+        });
+      });
+  }
+
+  getOneRun(id) {
+    axios.get(`/run/${id}`)
+      .then(res => {
+        this.setState({
+          name: res.data.name,
+          terrain: res.data.terrain,
+          status: res.data.status === 1 ? 'OPEN' : 'CLOSED',
+        });
+      });
+  }
+
   render() {
     const URL = 'http://www.accommodationtahoe.com/assets/images/autogen/a_north.gif';
     const MAP = {
       name: 'my-map',
       areas: [
-        // {name: '1', shape: 'poly', coords: [25,33,27,300,128,240,128,94], preFillColor: 'green', fillColor: 'blue'},
-        // {name: '1', shape: 'poly', coords: [25,33,27,300,128,240, 128, 94], preFillColor: 'red', fillColor: 'red'},
-        // {name: '2', shape: 'poly', coords: [219,118,220,210,283,210,284,119], preFillColor: 'pink'},
-        // {name: '3', shape: 'poly', coords: [381,241,383,94,462,53,457,282], fillColor: 'yellow'},
-        // {name: '4', shape: 'poly', coords: [245,285,290,285,274,239,249,238], preFillColor: 'red'},
-        // {name: '5', shape: 'circle', coords: [170, 100, 25 ], preFillColor: 'red'},
         {name: 'Martis', shape: 'poly', coords: [532, 330, 491, 360, 474, 393, 466, 413, 440, 437, 422, 450, 429, 460, 429, 458, 434, 499, 457, 534, 464, 561, 495, 564, 493, 553, 451, 494, 455, 471, 443, 446, 443, 447, 468, 424, 484, 396, 496, 378, 522, 353, 534, 346], fillColor: 'rgb(255, 209, 0, 0.8)'},
         {name: 'Boca', shape: 'poly', coords: [536, 347, 528, 383, 536, 403, 538, 440, 525, 467, 518, 477, 518, 491, 516, 505, 541, 572, 566, 574, 562, 561, 546, 548, 536, 502, 539, 490, 551, 436, 553, 413, 540, 390, 538, 379, 543, 366, 543, 344], fillColor: 'rgb(255, 209, 0, 0.8)'},
         {name: 'Gooseneck', shape: 'poly', coords: [546, 341, 555, 404, 569, 439, 584, 525, 579, 525, 586, 577, 604, 578, 593, 514, 580, 459, 573, 419, 576, 414, 570, 408, 559, 345], fillColor: 'rgb(255, 209, 0, 0.8)'},
