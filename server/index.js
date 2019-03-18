@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const { getAllRuns, getOneRun, updateRun, updateComplete } = require('../database/index');
+const { getAllRuns, getOneRun, updateRun, updateComplete, getLiftRuns } = require('../database/index');
 
 const app = express();
 app.use(morgan('dev'));
@@ -29,6 +29,17 @@ app.get('/run/:id', (req, res) => {
     }
   });
 });
+
+app.get('/runs/:lift_id', (req, res) => {
+  const { lift_id } = req.params;
+  getLiftRuns(lift_id, (err, info) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(info)
+    }
+  })
+})
 
 app.put('/run/:id', (req, res) => {
   const { id } = req.params;

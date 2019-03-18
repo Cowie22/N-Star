@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-class FavoriteDisplay extends React.Component {
+class RunsDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,34 +11,31 @@ class FavoriteDisplay extends React.Component {
   render() {
     return (
       <FavoriteStyleList>
-        FAVORITES!!
-        {this.props.info.map((run, i) => {
-          if (run.is_favorite === 1) {
-            return (
-              <li key={i}>
+        LIFT RUNS:
+        {this.props.info.map((runs, i) => {
+          return (
+            <li key={i}>
                 <NameDiv>
-                TRAIL NAME:  {run.name}
+                TRAIL NAME:  {runs.name}
                 </NameDiv>
                 <TerrainDiv
-                terrainType={run.terrain}
+                terrainType={runs.terrain}
                 >
-                  TERRAIN:  {run.terrain}
+                  TERRAIN:  {runs.terrain}
                 </TerrainDiv>
                 <StatusDiv
-                statusType={run.status}
+                statusType={runs.status}
                 >
-                  STATUS:   {run.status === 1 ? 'OPEN' : 'CLOSED'}
+                  STATUS:   {runs.status === 1 ? 'OPEN' : 'CLOSED'}
                 </StatusDiv>
               </li>
-            )
-          }
+          )
         })}
       </FavoriteStyleList>
     )
   }
 }
 
-export default FavoriteDisplay;
 
 const FavoriteStyleList = styled.ul`
   display: flex;
@@ -46,7 +43,7 @@ const FavoriteStyleList = styled.ul`
   width: 200px;
   position: absolute;
   top: 10%;
-  right: 2%;
+  right: 82%;
   background: rgb(255, 255, 255, 0.4);
   color: rgb(255, 209, 0);
   font-size: 22px;
@@ -78,3 +75,5 @@ const StatusDiv = styled.div`
   font-size: 14px;
   font-weight: 800;
 `;
+
+export default RunsDisplay;

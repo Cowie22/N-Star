@@ -88,6 +88,8 @@ const DisplayStyleSpan = styled.span`
   background: rgb(247, 246, 242, 0.7);
   justify-content: space-around;
   visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
+  font-size: 14px;
+  font-weight: 800;
 `;
 
 const NameDiv = styled.div`

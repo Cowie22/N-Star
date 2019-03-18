@@ -25,10 +25,20 @@ const getOneRun = (id, callback) => {
   });
 };
 
+const getLiftRuns = (lift_id, callback) => {
+  const queryStr = `SELECT * FROM lifts inner join runs on lifts.id = ${lift_id}`;
+  connection.query(queryStr, (err, runs) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null, runs);
+  })
+}
+
 const updateRun = (id, info, callback) => {
   let queryStr = `UPDATE runs SET is_favorite = ? where id = ${id}`;
   const params = [info.info];
-  console.log('1', info)
   connection.query(queryStr, params, (err) => {
     if (err) {
       callback(err);
@@ -41,7 +51,6 @@ const updateRun = (id, info, callback) => {
 const updateComplete = (id, info, callback) => {
   let queryStr = `UPDATE runs SET to_complete = ? where id = ${id}`;
   const params = [info.info];
-  console.log('2', info)
   connection.query(queryStr, params, (err) => {
     if (err) {
       callback(err);
@@ -52,5 +61,5 @@ const updateComplete = (id, info, callback) => {
 };
 
 module.exports = {
-  getOneRun, getAllRuns, updateRun, updateComplete
+  getOneRun, getAllRuns, updateRun, updateComplete, getLiftRuns
 }
