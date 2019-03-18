@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const { getAllRuns, getOneRun } = require('../database/index');
+const { getAllRuns, getOneRun, updateRun } = require('../database/index');
 
 const app = express();
 app.use(morgan('dev'));
@@ -29,6 +29,17 @@ app.get('/run/:id', (req, res) => {
     }
   });
 });
+
+app.put('/run/:id', (req, res) => {
+  const { id } = req.params;
+  updateRun(id, req.body, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(req.body);
+    }
+  })
+})
 
 
 const PORT = process.env.PORT || 2222;

@@ -1,17 +1,101 @@
 import React from 'react';
+import styled from 'styled-components';
 
 class Display extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      is_favorite: 0,
     };
+    this.updateFavoriteRun = this.updateFavoriteRun.bind(this);
+    this.handleFavoriteState = this.handleFavoriteState.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.info !== nextProps.info) {
+      this.handleFavoriteState(nextProps.info);
+    }
+  }
+
+  handleFavoriteState(event) {
+    this.setState({
+      is_favorite: event.is_favorite === 0 ? 1 : 0,
+    });
+  }
+
+  updateFavoriteRun() {
+    this.props.updateRun({info: this.state.is_favorite}, this.props.info.id);
+  }
+
   render() {
     return (
-      
+        <DisplayStyleSpan
+        isClicked={Boolean(this.props.info.id > 0)}
+        >
+          <NameDiv
+          isClicked={Boolean(this.props.info.id > 0)}
+          >
+            TRAIL NAME:  {this.props.info.name}
+          </NameDiv>
+          <TerrainDiv
+          isClicked={Boolean(this.props.info.id > 0)}
+          terrainType={this.props.info.terrain}
+          >
+            TERRAIN:  {this.props.info.terrain}
+          </TerrainDiv>
+          <StatusDiv
+          isClicked={Boolean(this.props.info.id > 0)}
+          statusType={this.props.info.status}
+          >
+            STATUS:   {this.props.info.status}
+          </StatusDiv>
+          <button className="display_btn"
+          onClick={this.updateFavoriteRun}
+          >
+          FAVORITE</button>
+          <button className="display_btn"
+          >
+          To Complete</button>
+        </DisplayStyleSpan>
     )
   }
 }
+
+const DisplayStyleSpan = styled.span`
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 73%;
+  right: 19%;
+  z-index: 1;
+  background: rgb(247, 246, 242, 0.7);
+  justify-content: space-around;
+  visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
+`;
+
+const NameDiv = styled.div`
+  color: #2774AE;
+  visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
+  cursor: pointer;
+`;
+
+const TerrainDiv = styled.div`
+  color: ${props => (
+  props.terrainType === 'Black Diamond: Most Difficult' ? 'black' :
+  props.terrainType === 'Black Diamond: Most Difficult' ? 'green' :
+  props.terrainType === 'Black Diamond: Most Difficult' ? 'blue' :
+  'orange'
+  )};
+  visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
+  cursor: pointer;
+`;
+
+const StatusDiv = styled.div`
+  color: ${props => (props.statusType === 'OPEN' ? '#28a833' : '#f71818')};
+  visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
+  cursor: pointer;
+`;
 
 export default Display;

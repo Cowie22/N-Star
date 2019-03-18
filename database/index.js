@@ -25,6 +25,20 @@ const getOneRun = (id, callback) => {
   });
 };
 
+const updateRun = (id, info, callback) => {
+  let queryStr = `UPDATE runs SET is_favorite = ? where id = ${id}`;
+  console.log('database info', info);
+  console.log('database id', id);
+  const params = [info.info];
+  connection.query(queryStr, params, (err) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null);
+  });
+};
+
 module.exports = {
-  getOneRun, getAllRuns,
+  getOneRun, getAllRuns, updateRun
 }

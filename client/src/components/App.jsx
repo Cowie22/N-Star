@@ -1,17 +1,21 @@
 import React from 'react';
 import axios from 'axios';
 import ImageMapper from 'react-image-mapper';
+import Display from './Display.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       runInfo: [],
-      id: 1,
+      oneRunInfo: [],
+      id: 0,
       name: '',
       terrain: '',
       status: '',
+      is_favorite: 0,
     };
     this.getRuns = this.getRuns.bind(this);
+    this.updateRun = this.updateRun.bind(this);
   }
 
   componentDidMount() {
@@ -31,12 +35,19 @@ class App extends React.Component {
     axios.get(`/run/${id}`)
       .then(res => {
         this.setState({
+          oneRunInfo: res.data,
           id: res.data[0].id,
           name: res.data[0].name,
           terrain: res.data[0].terrain,
           status: res.data[0].status === 1 ? 'OPEN' : 'CLOSED',
+          is_favorite: res.data[0].is_favorite,
         });
       });
+  }
+
+  updateRun(info, id) {
+    axios.put(`/run/${id}`, info)
+      .then(this.getOneRun(id));
   }
 
   render() {
@@ -63,6 +74,10 @@ class App extends React.Component {
           onClick={area => this.getOneRun(area.id)}
           />
         </div>
+        <Display
+        info={this.state}
+        updateRun={this.updateRun}
+        />
       </div>
     )
   }
