@@ -60,6 +60,18 @@ const updateComplete = (id, info, callback) => {
   });
 };
 
+const updateStatus = (id, info, callback) => {
+  let queryStr = `UPDATE runs SET status = ? where id = ${id}`;
+  const params = [info.info];
+  connection.query(queryStr, params, (err) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null);
+  })
+}
+
 module.exports = {
-  getOneRun, getAllRuns, updateRun, updateComplete, getLiftRuns
+  getOneRun, getAllRuns, updateRun, updateComplete, getLiftRuns, updateStatus
 }

@@ -22,6 +22,7 @@ class App extends React.Component {
     this.getRuns = this.getRuns.bind(this);
     this.updateRun = this.updateRun.bind(this);
     this.updateComplete = this.updateComplete.bind(this);
+    this.updateStatus = this.updateStatus.bind(this);
   }
 
   componentDidMount() {
@@ -64,6 +65,12 @@ class App extends React.Component {
       .then(this.getRuns());
   }
 
+  updateStatus(info, id) {
+    axios.put(`/runStatus/${id}`, info)
+      .then(this.getOneRun(id))
+      .then(this.getRuns());
+  }
+
   clickedOutside() {
 		this.setState({
       id: 0,
@@ -71,7 +78,6 @@ class App extends React.Component {
   }
 
   enterChairLift(lift_id) {
-    console.log(lift_id)
     if (lift_id > 0) {
       axios.get(`/runs/${lift_id}`)
         .then(res => {
@@ -113,6 +119,7 @@ class App extends React.Component {
         info={this.state}
         updateRun={this.updateRun}
         updateComplete={this.updateComplete}
+        updateStatus={this.updateStatus}
         />
         <FavoriteDisplay
         info={this.state.runInfo}

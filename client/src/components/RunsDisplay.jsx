@@ -70,7 +70,7 @@ const TerrainDiv = styled.div`
 `;
 
 const StatusDiv = styled.div`
-  color: ${props => (props.statusType === 1 ? '#28a833' : '#f71818')};
+  color: ${props => (props.statusType === 1 ? '#28a833' : '#aa1111')};
   cursor: pointer;
   font-size: 14px;
   font-weight: 800;

@@ -7,17 +7,21 @@ class Display extends React.Component {
     this.state = {
       is_favorite: 0,
       to_complete: 0,
+      status: 1,
     };
     this.updateFavoriteRun = this.updateFavoriteRun.bind(this);
     this.handleFavoriteState = this.handleFavoriteState.bind(this);
     this.handleToCompleteState = this.handleToCompleteState.bind(this);
     this.updateToCompleteRun = this.updateToCompleteRun.bind(this);
+    this.handleUpdateStatus = this.handleUpdateStatus.bind(this);
+    this.updateRunStatus = this.updateRunStatus.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.info !== nextProps.info) {
       this.handleFavoriteState(nextProps.info);
       this.handleToCompleteState(nextProps.info);
+      this.handleUpdateStatus(nextProps.info)
     }
   }
 
@@ -33,12 +37,22 @@ class Display extends React.Component {
     });
   }
 
+  handleUpdateStatus(event) {
+    this.setState({
+      status: event.status === 'CLOSED' ? 1 : 0,
+    })
+  }
+
   updateFavoriteRun() {
     this.props.updateRun({info: this.state.is_favorite}, this.props.info.id);
   }
 
   updateToCompleteRun() {
     this.props.updateComplete({info: this.state.to_complete}, this.props.info.id)
+  }
+
+  updateRunStatus() {
+    this.props.updateStatus({info: this.state.status}, this.props.info.id)
   }
 
   render() {
@@ -71,6 +85,11 @@ class Display extends React.Component {
           onClick={this.updateToCompleteRun}
           >
           To Complete</button>
+          <button className="display_btn"
+          onClick={this.updateRunStatus}
+          >
+            {this.props.info.status === 'OPEN' ? 'RUN IS OPEN' : "RUN IS CLOSED"}
+          </button>
         </DisplayStyleSpan>
     )
   }
@@ -110,7 +129,7 @@ const TerrainDiv = styled.div`
 `;
 
 const StatusDiv = styled.div`
-  color: ${props => (props.statusType === 'OPEN' ? '#28a833' : '#f71818')};
+  color: ${props => (props.statusType === 'OPEN' ? '#28a833' : '#aa1111')};
   visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
   cursor: pointer;
 `;
