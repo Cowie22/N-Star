@@ -18,3 +18,10 @@ h1 {
   background: #FFD100;
   color: #3daaff;
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}

@@ -36,6 +36,17 @@ const getLiftRuns = (lift_id, callback) => {
   })
 }
 
+const getVertical = (callback) => {
+  const queryStr = 'SELECT vertical_feet FROM runs where is_favorite = 1';
+  connection.query(queryStr, (err, run) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null, run);
+  });
+};
+
 const updateRun = (id, info, callback) => {
   let queryStr = `UPDATE runs SET is_favorite = ? where id = ${id}`;
   const params = [info.info];
@@ -73,5 +84,5 @@ const updateStatus = (id, info, callback) => {
 }
 
 module.exports = {
-  getOneRun, getAllRuns, updateRun, updateComplete, getLiftRuns, updateStatus
+  getOneRun, getAllRuns, updateRun, updateComplete, getLiftRuns, updateStatus, getVertical
 }

@@ -28,6 +28,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getRuns();
+    this.getVerticalFeet();
   }
 
   getRuns() {
@@ -36,7 +37,20 @@ class App extends React.Component {
         this.setState({
           runInfo: res.data,
         });
-      });
+      })
+  }
+
+  getVerticalFeet() {
+    let total = 0
+    axios.get(`/vertical`)
+      .then(res => {
+        for (let i = 0; i < res.data.length; i++) {
+          total += res.data[i].vertical_feet
+          this.setState({
+            vertical_feet: total
+          })
+        }
+      })
   }
 
   getOneRun(id) {
@@ -57,7 +71,8 @@ class App extends React.Component {
   updateRun(info, id) {
     axios.put(`/run/${id}`, info)
       .then(this.getOneRun(id))
-      .then(this.getRuns());
+      .then(this.getRuns())
+      .then(this.getVerticalFeet());
   }
 
   updateComplete(info, id) {
@@ -105,11 +120,15 @@ class App extends React.Component {
         {name: 'Polaris', id: 8, shape: 'poly', coords: [509, 161, 526, 171, 538, 182, 548, 197, 558, 210, 568, 220, 574, 229, 582, 258, 598, 277, 610, 288, 611, 297, 628, 295, 620, 287, 618, 279, 603, 266, 597, 261, 593, 241, 585, 222, 573, 211, 562, 198, 556, 192, 551, 180, 536, 167, 526, 157, 517, 152, 509, 145], fillColor: 'rgb(255, 209, 0, 0.8)'},
         {name: 'The Rapids', id: 9, shape: 'poly', coords: [503, 98, 518, 112, 551, 152, 552, 155, 554, 163, 584, 202, 590, 205, 589, 209, 595, 214, 615, 246, 619, 246, 623, 250, 625, 258, 630, 259, 653, 296, 668, 296, 658, 279, 642, 261, 641, 251, 604, 205, 556, 144, 523, 97], fillColor: 'rgb(255, 209, 0, 0.8)'},
         {name: 'Burn Out', id: 10, shape: 'poly', coords: [525, 96, 554, 125, 560, 130, 578, 152, 585, 155, 591, 161, 628, 197, 644, 211, 647, 213, 654, 229, 686, 263, 688, 270, 692, 269, 703, 291, 719, 290, 705, 269, 707, 265, 701, 263, 702, 256, 694, 253, 679, 239, 673, 232, 673, 224, 654, 209, 653, 202, 637, 188, 628, 176, 600, 157, 592, 150, 582, 135, 543, 98], fillColor: 'rgb(255, 209, 0, 0.8)'},
+        {name: 'Rail Splitter', id: 11, shape: 'poly', coords: [590, 105, 616, 120, 620, 125, 621, 131, 623, 153, 656, 178, 690, 210, 720, 239, 734, 257, 744, 272, 747, 272, 746, 285, 763, 280, 759, 273, 748, 256, 738, 241, 735, 239, 735, 232, 714, 213, 703, 209, 689, 190, 671, 174, 666, 169, 642, 154, 634, 146, 632, 142, 635, 134, 634, 120], fillColor: 'rgb(255, 209, 0, 0.8)'},
       ]
     };
     return (
       <div>
-        <h1>N-STAR</h1>
+        <span className="header">
+          <h1>N-STAR</h1>
+          <h1>{this.state.vertical_feet} Vertical Feet</h1>
+        </span>
         <div className="image_container">
           <ImageMapper className="N-Star"
           src={URL}

@@ -8,6 +8,7 @@ class Display extends React.Component {
       is_favorite: 0,
       to_complete: 0,
       status: 1,
+      vertical_feet: 0,
     };
     this.updateFavoriteRun = this.updateFavoriteRun.bind(this);
     this.handleFavoriteState = this.handleFavoriteState.bind(this);
@@ -21,7 +22,7 @@ class Display extends React.Component {
     if (this.props.info !== nextProps.info) {
       this.handleFavoriteState(nextProps.info);
       this.handleToCompleteState(nextProps.info);
-      this.handleUpdateStatus(nextProps.info)
+      this.handleUpdateStatus(nextProps.info);
     }
   }
 

@@ -5,26 +5,8 @@ class FavoriteDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      vertical_feet: 0,
+      
     }
-    this.handleVerticalFeet = this.handleVerticalFeet.bind(this);
-  }
-
-  componentDidMount() {
-    this.handleVerticalFeet()
-  }
-
-  handleVerticalFeet() {
-    console.log(this.props.info)
-    this.props.info.map((run, i) => {
-      console.log('run', run.vertical_feet)
-      if (run.is_favorite === 1) {
-        this.setState({
-          vertical_feet: this.state.vertical_feet + run.vertical_feet
-        })
-      }
-    })
-    console.log(this.state.vertical_feet);
   }
 
   render() {
