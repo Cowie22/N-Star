@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ImageMapper from 'react-image-mapper';
 import Display from './Display.jsx';
+import FavoriteDisplay from './FavoriteDisplay.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,9 +14,11 @@ class App extends React.Component {
       terrain: '',
       status: '',
       is_favorite: 0,
+      to_complete: 0,
     };
     this.getRuns = this.getRuns.bind(this);
     this.updateRun = this.updateRun.bind(this);
+    this.updateComplete = this.updateComplete.bind(this);
   }
 
   componentDidMount() {
@@ -41,14 +44,28 @@ class App extends React.Component {
           terrain: res.data[0].terrain,
           status: res.data[0].status === 1 ? 'OPEN' : 'CLOSED',
           is_favorite: res.data[0].is_favorite,
+          to_complete: res.data[0].to_complete,
         });
       });
   }
 
   updateRun(info, id) {
     axios.put(`/run/${id}`, info)
-      .then(this.getOneRun(id));
+      .then(this.getOneRun(id))
+      .then(this.getRuns());
   }
+
+  updateComplete(info, id) {
+    axios.put(`/toComplete/${id}`, info)
+      .then(this.getOneRun(id))
+      .then(this.getRuns());
+  }
+
+  clickedOutside() {
+		this.setState({
+      id: 0,
+    });
+	}
 
   render() {
     const URL = 'http://www.accommodationtahoe.com/assets/images/autogen/a_north.gif';
@@ -72,11 +89,16 @@ class App extends React.Component {
           width={900}
           height={700}
           onClick={area => this.getOneRun(area.id)}
+          onImageClick={() => this.clickedOutside()}
           />
         </div>
         <Display
         info={this.state}
         updateRun={this.updateRun}
+        updateComplete={this.updateComplete}
+        />
+        <FavoriteDisplay
+        info={this.state.runInfo}
         />
       </div>
     )

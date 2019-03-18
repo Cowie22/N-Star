@@ -6,14 +6,18 @@ class Display extends React.Component {
     super(props);
     this.state = {
       is_favorite: 0,
+      to_complete: 0,
     };
     this.updateFavoriteRun = this.updateFavoriteRun.bind(this);
     this.handleFavoriteState = this.handleFavoriteState.bind(this);
+    this.handleToCompleteState = this.handleToCompleteState.bind(this);
+    this.updateToCompleteRun = this.updateToCompleteRun.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.info !== nextProps.info) {
       this.handleFavoriteState(nextProps.info);
+      this.handleToCompleteState(nextProps.info);
     }
   }
 
@@ -23,8 +27,18 @@ class Display extends React.Component {
     });
   }
 
+  handleToCompleteState(event) {
+    this.setState({
+      to_complete: event.to_complete === 0 ? 1 : 0,
+    });
+  }
+
   updateFavoriteRun() {
     this.props.updateRun({info: this.state.is_favorite}, this.props.info.id);
+  }
+
+  updateToCompleteRun() {
+    this.props.updateComplete({info: this.state.to_complete}, this.props.info.id)
   }
 
   render() {
@@ -54,6 +68,7 @@ class Display extends React.Component {
           >
           FAVORITE</button>
           <button className="display_btn"
+          onClick={this.updateToCompleteRun}
           >
           To Complete</button>
         </DisplayStyleSpan>

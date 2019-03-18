@@ -27,9 +27,21 @@ const getOneRun = (id, callback) => {
 
 const updateRun = (id, info, callback) => {
   let queryStr = `UPDATE runs SET is_favorite = ? where id = ${id}`;
-  console.log('database info', info);
-  console.log('database id', id);
   const params = [info.info];
+  console.log('1', info)
+  connection.query(queryStr, params, (err) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null);
+  });
+};
+
+const updateComplete = (id, info, callback) => {
+  let queryStr = `UPDATE runs SET to_complete = ? where id = ${id}`;
+  const params = [info.info];
+  console.log('2', info)
   connection.query(queryStr, params, (err) => {
     if (err) {
       callback(err);
@@ -40,5 +52,5 @@ const updateRun = (id, info, callback) => {
 };
 
 module.exports = {
-  getOneRun, getAllRuns, updateRun
+  getOneRun, getAllRuns, updateRun, updateComplete
 }
