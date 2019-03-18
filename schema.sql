@@ -49,11 +49,28 @@ INSERT into lifts (name, start_elevation, end_elevation) VALUES ("Bear Paw", 695
 
 -- Populates runs
 
+-- Lookout Chair
 INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Martis", "Black Diamond: Most Difficult", 1, 0, 0, 1);
 INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Boca", "Black Diamond: Most Difficult", 1, 0, 0, 1);
 INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Gooseneck", "Black Diamond: Most Difficult", 1, 0, 0, 1);
 INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Stampede", "Black Diamond: Most Difficult", 1, 0, 0, 1);
 INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Prosser", "Black Diamond: Most Difficult", 1, 0, 0, 1);
+
+-- Backside Chair
+
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Promised Land", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Iron Horse", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Polaris", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("The Rapids", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Burn Out", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Rail Splitter", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Sierra Grande", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Challenger", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Follow Me", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Lower Burn Out", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Down Under", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Why Not", "Black Diamond: Most Difficult", 1, 0, 0, 2);
+INSERT into runs (name, terrain, status, is_favorite, to_complete, lift_id) VALUES ("Backdoor", "Blue Square: More Difficult", 1, 0, 0, 2);
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
