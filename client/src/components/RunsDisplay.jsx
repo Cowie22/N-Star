@@ -15,7 +15,9 @@ class RunsDisplay extends React.Component {
         {this.props.info.map((runs, i) => {
           return (
             <li key={i}>
-                <NameDiv>
+                <NameDiv
+                isFavorite={Boolean(runs.is_favorite === 1)}
+                >
                 TRAIL NAME:  {runs.name}
                 </NameDiv>
                 <TerrainDiv
@@ -43,15 +45,15 @@ const FavoriteStyleList = styled.ul`
   width: 200px;
   position: absolute;
   top: 10%;
-  right: 82%;
+  right: 82.2%;
   background: rgb(255, 255, 255, 0.4);
-  color: rgb(255, 209, 0);
+  color: #aa1111;
   font-size: 22px;
   font-weight: 800;
 `;
 
 const NameDiv = styled.div`
-  color: #3daaff;
+  color: ${props => (props.isFavorite ? 'rgb(255, 209, 0)' : '#3daaff')};
   cursor: pointer;
   font-size: 14px;
   font-weight: 800;

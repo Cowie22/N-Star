@@ -46,7 +46,7 @@ const FavoriteStyleList = styled.ul`
   width: 200px;
   position: absolute;
   top: 10%;
-  right: 2%;
+  right: 1%;
   background: rgb(255, 255, 255, 0.4);
   color: rgb(255, 209, 0);
   font-size: 22px;

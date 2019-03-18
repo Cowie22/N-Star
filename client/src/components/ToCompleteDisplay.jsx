@@ -16,7 +16,9 @@ class ToCompleteDisplay extends React.Component {
           if (run.to_complete === 1) {
             return (
               <li key={i}>
-                <NameDiv>
+                <NameDiv
+                isFavorite={Boolean(run.is_favorite === 1)}
+                >
                 TRAIL NAME:  {run.name}
                 </NameDiv>
                 <TerrainDiv
@@ -46,7 +48,7 @@ const FavoriteStyleList = styled.ul`
   width: 200px;
   position: absolute;
   top: 60%;
-  right: 2%;
+  right: 1%;
   background: rgb(255, 255, 255, 0.4);
   color: #aa1111;
   font-size: 22px;
@@ -54,7 +56,7 @@ const FavoriteStyleList = styled.ul`
 `;
 
 const NameDiv = styled.div`
-  color: #3daaff;
+  color: ${props => (props.isFavorite ? 'rgb(255, 209, 0)' : '#3daaff')};
   cursor: pointer;
   font-size: 14px;
   font-weight: 800;

@@ -62,6 +62,7 @@ class Display extends React.Component {
         >
           <NameDiv
           isClicked={Boolean(this.props.info.id > 0)}
+          isFavorite={Boolean(this.props.info.is_favorite === 1)}
           >
             TRAIL NAME:  {this.props.info.name}
           </NameDiv>
@@ -112,7 +113,7 @@ const DisplayStyleSpan = styled.span`
 `;
 
 const NameDiv = styled.div`
-  color: #2774AE;
+  color: ${props => (props.isFavorite ? 'rgb(214, 175, 0)' : '#3daaff')};
   visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
   cursor: pointer;
 `;
