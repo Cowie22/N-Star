@@ -26,7 +26,7 @@ const getOneRun = (id, callback) => {
 };
 
 const getLiftRuns = (lift_id, callback) => {
-  const queryStr = `SELECT * FROM lifts inner join runs on lifts.id = ${lift_id}`;
+  const queryStr = `SELECT * FROM lifts inner join runs on lifts.id = ${lift_id} and runs.lift_id = ${lift_id};`;
   connection.query(queryStr, (err, runs) => {
     if (err) {
       callback(err);

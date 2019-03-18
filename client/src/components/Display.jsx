@@ -81,7 +81,7 @@ class Display extends React.Component {
           <button className="display_btn"
           onClick={this.updateFavoriteRun}
           >
-          FAVORITE</button>
+          COMPLETED</button>
           <button className="display_btn"
           onClick={this.updateToCompleteRun}
           >
