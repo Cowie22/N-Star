@@ -73,6 +73,18 @@ INSERT into runs (name, terrain, status, is_favorite, to_complete, vertical_feet
 INSERT into runs (name, terrain, status, is_favorite, to_complete, vertical_feet, lift_id) VALUES ("Why Not", "Black Diamond: Most Difficult", 1, 0, 0, 1810, 2);
 INSERT into runs (name, terrain, status, is_favorite, to_complete, vertical_feet, lift_id) VALUES ("Backdoor", "Blue Square: More Difficult", 1, 0, 0, 1810, 2);
 
+
+-- Places Restaurants
+
+INSERT into places (name, description, open_time, close_time) VALUES ("Main Lodge", "Restaurants, Bathrooms, Lockers, Bars, Shops, Customer Services", '08:00:00', '04:30:00');
+INSERT into places (name, description, open_time, close_time) VALUES ("Zephyr Lodge", "Restaurants, Bathrooms, Lockers, Bars, Shops, Customer Services", '08:00:00', '04:30:00');
+INSERT into places (name, description, open_time, close_time) VALUES ("Comstock Lodge", "Restaurants, Bathrooms, Lockers, Bars, Shops, Customer Services", '08:00:00', '04:30:00');
+INSERT into places (name, description, open_time, close_time) VALUES ("Backside Lodge", "Restaurants, Bathrooms, Lockers, Bars, Shops, Customer Services", '08:00:00', '04:30:00');
+INSERT into places (name, description, open_time, close_time) VALUES ("Lookout Tables", "Picknick Tables", '08:00:00', '04:30:00');
+INSERT into places (name, description, open_time, close_time) VALUES ("Logers Loop Tables", "Picknick Tables", '08:00:00', '04:30:00');
+INSERT into places (name, description, open_time, close_time) VALUES ("Village", "Everything", '08:00:00', '11:00:00');
+
+
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < schema.sql
  *  to create the database and the tables.*/

@@ -25,3 +25,93 @@ h1 {
   justify-content: space-around;
   text-align: center;
 }
+
+.fa-arrow-down1 {
+  background: #FFD100;
+  z-index: 10;
+  position: absolute;
+  top: 48%;
+  right: 41.8%;
+}
+
+.fa-arrow-down2 {
+  background: #FFD100;
+  z-index: 10;
+  position: absolute;
+  top: 66.8%;
+  right: 71%;
+}
+
+.fa-arrow-down3 {
+  background: #FFD100;
+  z-index: 10;
+  position: absolute;
+  top: 86%;
+  right: 74.4%;
+}
+
+.fa-arrow-down4 {
+  background: #FFD100;
+  z-index: 10;
+  position: absolute;
+  top: 49%;
+  right: 47.6%;
+}
+
+.fa-arrow-down5 {
+  background: #FFD100;
+  z-index: 10;
+  position: absolute;
+  top: 34%;
+  right: 69.6%;
+}
+
+.fa-arrow-down6 {
+  background: #FFD100;
+  z-index: 10;
+  position: absolute;
+  top: 20%;
+  right: 43%;
+}
+
+.fa-arrow-down7 {
+  background: #FFD100;
+  z-index: 10;
+  position: absolute;
+  top: 20%;
+  right: 46%;
+}
+
+.eat-btn {
+  background: #3daaff;
+  color: #FFD100;
+  font-size: 14px;
+  font-weight: 800;
+  width: 60px;
+  height: 40px;
+  position: absolute;
+  top: 4%;
+  right: 50%;
+}
+
+.eat-btn:hover {
+  background: #FFD100;
+  color: #3daaff;
+}
+
+.picnic-btn {
+  background: #3daaff;
+  color: #FFD100;
+  font-size: 14px;
+  font-weight: 800;
+  width: 60px;
+  height: 40px;
+  position: absolute;
+  top: 4%;
+  right: 60%;
+}
+
+.picnic-btn:hover {
+  background: #FFD100;
+  color: #3daaff;
+}

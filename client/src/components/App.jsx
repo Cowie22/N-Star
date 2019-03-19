@@ -5,7 +5,12 @@ import Display from './Display.jsx';
 import FavoriteDisplay from './FavoriteDisplay.jsx';
 import ToCompleteDisplay from './ToCompleteDisplay.jsx';
 import RunsDisplay from './RunsDisplay.jsx';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
+
+library.add(faArrowDown);
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -20,16 +25,32 @@ class App extends React.Component {
       is_favorite: 0,
       to_complete: 0,
       vertical_feet: 0,
+      show: false,
+      picnic: false,
     };
     this.getRuns = this.getRuns.bind(this);
     this.updateRun = this.updateRun.bind(this);
     this.updateComplete = this.updateComplete.bind(this);
     this.updateStatus = this.updateStatus.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.handlePicnic = this.handlePicnic.bind(this);
   }
 
   componentDidMount() {
     this.getRuns();
     this.getVerticalFeet();
+  }
+
+  handleShow() {
+    this.setState({
+      show: !this.state.show,
+    })
+  }
+
+  handlePicnic() {
+    this.setState({
+      show: !this.state.picnic,
+    })
   }
 
   getRuns() {
@@ -107,6 +128,7 @@ class App extends React.Component {
 
   render() {
     const URL = 'http://www.accommodationtahoe.com/assets/images/autogen/a_north.gif';
+    let show = this.state.show
     const MAP = {
       name: 'my-map',
       areas: [
@@ -130,6 +152,12 @@ class App extends React.Component {
         {name: 'Why Not', id: 17, shape: 'poly', coords: [642, 350, 655, 360, 669, 368, 687, 372, 687, 371, 689, 364, 672, 362, 663, 355, 660, 350, 660, 357], fillColor: 'rgb(255, 209, 0, 0.8)'},
         {name: 'Backdoor', id: 18, shape: 'poly', coords: [456, 340, 445, 322, 471, 310, 519, 297, 525, 294, 563, 299, 587, 296, 610, 295, 632, 292, 650, 292, 668, 293, 700, 292, 720, 291, 735, 288, 744, 283, 739, 298, 717, 302, 682, 301, 687, 313, 704, 324, 713, 327, 705, 338, 684, 323, 669, 312, 658, 300, 634, 302, 640, 312, 661, 323, 704, 339, 700, 351, 662, 336, 642, 325, 628, 318, 618, 309, 611, 302, 590, 305, 597, 313, 618, 330, 645, 337, 700, 352, 689, 363, 671, 357, 660, 352, 644, 351, 631, 344, 609, 338, 592, 329, 568, 305, 515, 303, 510, 303, 457, 320, 456, 328, 460, 343, 460, 350, 456, 348], fillColor: 'rgb(255, 209, 0, 0.8)'},
         {name: 'Lookout', lift_id: 2, shape: 'poly', coords: [623, 228, 634, 225, 681, 280, 673, 288, 623, 222], fillColor: 'rgb(170, 17, 17, 0.8)'},
+        {name: 'Main Lodge', place_id: 1, shape: 'poly', coords: [642, 350, 655, 360, 669, 368, 687, 372, 687, 371, 689, 364, 672, 362, 663, 355, 660, 350, 660, 357], fillColor: 'rgb(255, 209, 0, 0.8)'},
+        {name: 'Zephyr Lodge', place_id: 2, shape: 'poly', coords: [642, 350, 655, 360, 669, 368, 687, 372, 687, 371, 689, 364, 672, 362, 663, 355, 660, 350, 660, 357], fillColor: 'rgb(255, 209, 0, 0.8)'},
+        {name: 'Comstock Lodge', place_id: 3, shape: 'poly', coords: [642, 350, 655, 360, 669, 368, 687, 372, 687, 371, 689, 364, 672, 362, 663, 355, 660, 350, 660, 357], fillColor: 'rgb(255, 209, 0, 0.8)'},
+        {name: 'Backside Lodge', place_id: 4, shape: 'poly', coords: [642, 350, 655, 360, 669, 368, 687, 372, 687, 371, 689, 364, 672, 362, 663, 355, 660, 350, 660, 357], fillColor: 'rgb(255, 209, 0, 0.8)'},
+        {name: 'Lookout Tables', place_id: 5, shape: 'poly', coords: [642, 350, 655, 360, 669, 368, 687, 372, 687, 371, 689, 364, 672, 362, 663, 355, 660, 350, 660, 357], fillColor: 'rgb(255, 209, 0, 0.8)'},
+        {name: 'Logers Loop Tables', place_id: 6, shape: 'poly', coords: [642, 350, 655, 360, 669, 368, 687, 372, 687, 371, 689, 364, 672, 362, 663, 355, 660, 350, 660, 357], fillColor: 'rgb(255, 209, 0, 0.8)'},
       ]
     };
     return (
@@ -144,6 +172,7 @@ class App extends React.Component {
           map={MAP}
           width={900}
           height={700}
+          show={Boolean(this.state.show === true)}
           onClick={area => this.getOneRun(area.id)}
           onImageClick={() => this.clickedOutside()}
           onMouseEnter={area => this.enterChairLift(area.lift_id)}
@@ -164,6 +193,15 @@ class App extends React.Component {
         <RunsDisplay
         info={this.state.currentRuns}
         />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down2" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down3" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down4" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down5" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down6" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down7" icon="arrow-down" />
+        <button onClick={() => this.handleShow()} className="eat-btn">FOOD</button>
+        <button onClick={() => this.handlePicnic()} className="picnic-btn">PICNIC</button>
       </div>
     )
   }
