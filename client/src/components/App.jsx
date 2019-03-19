@@ -8,9 +8,11 @@ import RunsDisplay from './RunsDisplay.jsx';
 import Places from './Places.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faUtensils, faChair } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faArrowDown);
+library.add(faUtensils);
+library.add(faChair);
 
 class App extends React.Component {
   constructor(props) {
@@ -214,13 +216,13 @@ class App extends React.Component {
         <Places 
         info={this.state.onePlaceInfo}
         />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="arrow-down" onClick={() => this.getOnePlace(5)} />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down2" icon="arrow-down" onClick={() => this.getOnePlace(1)} />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down3" icon="arrow-down" onClick={() => this.getOnePlace(7)} />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down4" icon="arrow-down" onClick={() => this.getOnePlace(2)} />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden'}} className="fa-arrow-down5" icon="arrow-down" onClick={() => this.getOnePlace(6)} />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down6" icon="arrow-down" onClick={() => this.getOnePlace(4)} />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down7" icon="arrow-down" onClick={() => this.getOnePlace(3)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="chair" onClick={() => this.getOnePlace(5)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down2" icon="utensils" onClick={() => this.getOnePlace(1)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down3" icon="utensils" onClick={() => this.getOnePlace(7)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down4" icon="utensils" onClick={() => this.getOnePlace(2)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden'}} className="fa-arrow-down5" icon="chair" onClick={() => this.getOnePlace(6)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down6" icon="utensils" onClick={() => this.getOnePlace(4)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down7" icon="utensils" onClick={() => this.getOnePlace(3)} />
         <button onClick={() => this.handleShow()} className="eat-btn">FOOD</button>
         <button onClick={() => this.handlePicnic()} className="picnic-btn">PICNIC</button>
       </div>
