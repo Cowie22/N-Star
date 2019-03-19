@@ -5,6 +5,7 @@ import Display from './Display.jsx';
 import FavoriteDisplay from './FavoriteDisplay.jsx';
 import ToCompleteDisplay from './ToCompleteDisplay.jsx';
 import RunsDisplay from './RunsDisplay.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
