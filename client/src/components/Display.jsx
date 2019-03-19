@@ -122,8 +122,8 @@ const NameDiv = styled.div`
 const TerrainDiv = styled.div`
   color: ${props => (
   props.terrainType === 'Black Diamond: Most Difficult' ? 'black' :
-  props.terrainType === 'Black Diamond: Most Difficult' ? 'green' :
-  props.terrainType === 'Black Diamond: Most Difficult' ? 'blue' :
+  props.terrainType === 'Blue Square: More Difficult' ? '#3daaff' :
+  props.terrainType === 'Green Circle: Easiest Way Down' ? '#28a833' :
   'orange'
   )};
   visibility: ${props => (props.isClicked ? 'visible' : 'hidden')};
