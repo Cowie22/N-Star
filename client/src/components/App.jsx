@@ -5,6 +5,7 @@ import Display from './Display.jsx';
 import FavoriteDisplay from './FavoriteDisplay.jsx';
 import ToCompleteDisplay from './ToCompleteDisplay.jsx';
 import RunsDisplay from './RunsDisplay.jsx';
+import Places from './Places.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
@@ -94,7 +95,6 @@ class App extends React.Component {
   getOnePlace(place_id) {
     axios.get(`/place/${place_id}`)
       .then(res => {
-        console.log(res.data)
         this.setState({
           onePlaceInfo: res.data,
         })
@@ -210,6 +210,9 @@ class App extends React.Component {
         />
         <RunsDisplay
         info={this.state.currentRuns}
+        />
+        <Places 
+        info={this.state.onePlaceInfo}
         />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="arrow-down" onClick={() => this.getOnePlace(5)} />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down2" icon="arrow-down" onClick={() => this.getOnePlace(1)} />
