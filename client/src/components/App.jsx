@@ -49,7 +49,7 @@ class App extends React.Component {
 
   handlePicnic() {
     this.setState({
-      show: !this.state.picnic,
+      picnic: !this.state.picnic,
     })
   }
 
@@ -193,11 +193,11 @@ class App extends React.Component {
         <RunsDisplay
         info={this.state.currentRuns}
         />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="arrow-down" />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down2" icon="arrow-down" />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down3" icon="arrow-down" />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down4" icon="arrow-down" />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down5" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden'}} className="fa-arrow-down5" icon="arrow-down" />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down6" icon="arrow-down" />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down7" icon="arrow-down" />
         <button onClick={() => this.handleShow()} className="eat-btn">FOOD</button>
