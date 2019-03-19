@@ -117,3 +117,7 @@ h1 {
   background: #FFD100;
   color: #3daaff;
 }
+
+.N-Star {
+  z-index: 100;
+}

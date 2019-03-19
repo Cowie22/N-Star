@@ -25,6 +25,17 @@ const getOneRun = (id, callback) => {
   });
 };
 
+const getOnePlace = (place_id, callback) => {
+  const queryStr = `SELECT * FROM places WHERE id = ${place_id}`;
+  connection.query(queryStr, (err, place) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null, place);
+  });
+};
+
 const getLiftRuns = (lift_id, callback) => {
   const queryStr = `SELECT * FROM lifts inner join runs on lifts.id = ${lift_id} and runs.lift_id = ${lift_id};`;
   connection.query(queryStr, (err, runs) => {
@@ -84,5 +95,5 @@ const updateStatus = (id, info, callback) => {
 }
 
 module.exports = {
-  getOneRun, getAllRuns, updateRun, updateComplete, getLiftRuns, updateStatus, getVertical
+  getOneRun, getAllRuns, updateRun, updateComplete, getLiftRuns, updateStatus, getVertical, getOnePlace
 }

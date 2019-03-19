@@ -9,8 +9,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-
 library.add(faArrowDown);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +18,7 @@ class App extends React.Component {
       runInfo: [],
       oneRunInfo: [],
       currentRuns: [],
+      onePlaceInfo: [],
       id: 0,
       name: '',
       terrain: '',
@@ -88,6 +89,16 @@ class App extends React.Component {
           to_complete: res.data[0].to_complete,
         });
       });
+  }
+
+  getOnePlace(place_id) {
+    axios.get(`/place/${place_id}`)
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          onePlaceInfo: res.data,
+        })
+      })
   }
 
   updateRun(info, id) {
@@ -174,7 +185,13 @@ class App extends React.Component {
           width={900}
           height={700}
           show={Boolean(this.state.show === true)}
-          onClick={area => this.getOneRun(area.id)}
+          onClick={area => {
+            if (area.id) {
+              this.getOneRun(area.id)
+            } else {
+              this.getOnePlace(area.place_id) 
+            }
+          }}
           onImageClick={() => this.clickedOutside()}
           onMouseEnter={area => this.enterChairLift(area.lift_id)}
           />
@@ -194,13 +211,13 @@ class App extends React.Component {
         <RunsDisplay
         info={this.state.currentRuns}
         />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="arrow-down" />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down2" icon="arrow-down" />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down3" icon="arrow-down" />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down4" icon="arrow-down" />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden'}} className="fa-arrow-down5" icon="arrow-down" />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down6" icon="arrow-down" />
-        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down7" icon="arrow-down" />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="arrow-down" onClick={() => this.getOnePlace(5)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down2" icon="arrow-down" onClick={() => this.getOnePlace(1)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down3" icon="arrow-down" onClick={() => this.getOnePlace(7)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down4" icon="arrow-down" onClick={() => this.getOnePlace(2)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden'}} className="fa-arrow-down5" icon="arrow-down" onClick={() => this.getOnePlace(6)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down6" icon="arrow-down" onClick={() => this.getOnePlace(4)} />
+        <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.show ? 'visible' : 'hidden'}} className="fa-arrow-down7" icon="arrow-down" onClick={() => this.getOnePlace(3)} />
         <button onClick={() => this.handleShow()} className="eat-btn">FOOD</button>
         <button onClick={() => this.handlePicnic()} className="picnic-btn">PICNIC</button>
       </div>

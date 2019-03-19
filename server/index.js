@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const { getAllRuns, getOneRun, updateRun, updateComplete, getLiftRuns, updateStatus, getVertical } = require('../database/index');
+const { getAllRuns, getOneRun, updateRun, updateComplete, getLiftRuns, updateStatus, getVertical, getOnePlace } = require('../database/index');
 
 const app = express();
 app.use(morgan('dev'));
@@ -22,6 +22,17 @@ app.get('/run', (req, res) => {
 app.get('/run/:id', (req, res) => {
   const { id } = req.params;
   getOneRun(id, (err, info) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(info)
+    }
+  });
+});
+
+app.get('/place/:place_id', (req, res) => {
+  const { place_id } = req.params;
+  getOnePlace(place_id, (err, info) => {
     if (err) {
       res.status(500).send(err);
     } else {
