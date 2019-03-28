@@ -125,6 +125,7 @@ class App extends React.Component {
   clickedOutside() {
 		this.setState({
       id: 0,
+      onePlaceInfo: [],
     });
   }
 
@@ -213,7 +214,7 @@ class App extends React.Component {
         <RunsDisplay
         info={this.state.currentRuns}
         />
-        <Places 
+        <Places
         info={this.state.onePlaceInfo}
         />
         <FontAwesomeIcon style={{ height: '20px', width: '20px', visibility: this.state.picnic ? 'visible' : 'hidden' }} className="fa-arrow-down1" icon="chair" onClick={() => this.getOnePlace(5)} />

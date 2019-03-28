@@ -11,7 +11,7 @@ class Places extends React.Component {
 
   render() { 
       return (
-        this.props.info[0] ? 
+        this.props.info[0] ?
         <DisplayStyleSpan
           isClicked={Boolean(this.props.info[0].id > 0)}
           >
